@@ -1,5 +1,5 @@
-#ifndef SQUASH_H_INCLUDED
-#define SQUASH_H_INCLUDED
+#ifndef SQUASH_H
+#define SQUASH_H
 
 #ifdef __cplusplus
 extern "C" {
