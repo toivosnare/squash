@@ -42,7 +42,8 @@ static node_type type(const char *start, size_t length) {
 }
 
 int squash_path(char *path) {
-    if (strlen(path) == 0)
+    const size_t path_length = strlen(path);
+    if (path_length == 0)
         return 0;
     if (path[0] != '/') {
         fprintf(stderr, "Path must be absolute.\n");
@@ -100,16 +101,15 @@ int squash_path(char *path) {
     print_node_list(head, false);
 #endif
 
+    const bool trailing_slash = path[path_length - 1] == '/';
     node *n = head;
     char *p = path + 1;
     while (n != NULL) {
-        if (p == n->start)
-            p += n->length + 1;
-        else {
+        if (p != n->start)
             memcpy(p, n->start, n->length);
-            p += n->length;
+        p += n->length;
+        if (n != tail || trailing_slash)
             *p++ = '/';
-        }
         node *next = n->next;
         SQUASH_FREE(n);
         n = next;

@@ -13,3 +13,5 @@ squash_path("/../home/") -> "/home/"
 The function modifies the input string in place to avoid unnecessary copying. The length of the squashed path is always equal or less than the original path so there are no buffer overruns.
 
 The function is defined in the `squash.c` file. There is also a `main.c` file to use the function as a command line program.
+
+> NEW! Trailing slash, or the absence thereof, will now be preserved from the input path to the output!
