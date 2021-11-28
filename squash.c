@@ -47,7 +47,7 @@ int squash_path(char *path) {
         return 0;
     if (path[0] != '/') {
         fprintf(stderr, "Path must be absolute.\n");
-        return 2;
+        return 3;
     }
 
     node *head = NULL;
@@ -79,7 +79,7 @@ int squash_path(char *path) {
             node *next = SQUASH_MALLOC(sizeof(node));
             if (!next) {
                 fprintf(stderr, "Memory allocation failed!\n");
-                return 3;
+                return 4;
             }
             next->start = start;
             next->length = length;
